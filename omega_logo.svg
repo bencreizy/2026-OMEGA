@@ -1,0 +1,16 @@
+﻿<svg width="130" height="130" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Outer Ring -->
+  <circle cx="50" cy="50" r="45" stroke="#00f0ff" stroke-width="2" stroke-dasharray="10 5" opacity="0.6" />
+  <!-- Omega Symbol -->
+  <path d="M30 70C30 70 25 70 25 65C25 60 35 55 35 40C35 30 42 25 50 25C58 25 65 30 65 40C65 55 75 60 75 65C75 70 70 70 70 70H60V65C60 65 65 65 65 62C65 58 55 52 55 40C55 38 53 35 50 35C47 35 45 38 45 40C45 52 35 58 35 62C35 65 40 65 40 65V70H30Z" fill="#00f0ff">
+    <animate attributeName="opacity" values="0.8;1;0.8" dur="4s" repeatCount="indefinite" />
+  </path>
+  <!-- Inner Glow -->
+  <circle cx="50" cy="50" r="15" fill="url(#paint0_radial)" opacity="0.3" />
+  <defs>
+    <radialGradient id="paint0_radial" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(50 50) rotate(90) scale(15)">
+      <stop stop-color="#00f0ff" />
+      <stop offset="1" stop-color="#00f0ff" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+</svg>
