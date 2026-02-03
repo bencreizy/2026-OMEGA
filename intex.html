@@ -313,6 +313,220 @@
             };
 
             const hudInput = document.getElementById('hud-input');
+            const numInput             z-index: 10; 
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
+        }
+        .input:hover, .input:focus {
+            transform: translateY(-8px);
+            box-shadow: inset 2px 5px 10px rgb(5, 5, 5), 0 0 45px 4px rgba(255, 255, 255, 0.8);
+        }
+        
+        .cyber-signboard { display: flex; justify-content: center; padding: 10px; width: 100%; z-index: 10; }
+        
+        /* Axis Switch Elevation & Glow */
+        .cyber-switch { 
+            position: relative; 
+            width: 280px; 
+            height: 70px; 
+            background: #0f1016; 
+            border-radius: 20px; 
+            display: flex; 
+            align-items: center; 
+            padding: 6px; 
+            border: 1px solid #1f222e; 
+            overflow: hidden; 
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
+        }
+        .cyber-switch:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5), 0 0 30px 4px rgba(255, 255, 255, 0.5);
+        }
+
+        .cyber-label { flex: 1; height: 100%; display: flex; justify-content: center; align-items: center; cursor: pointer; z-index: 2; position: relative; }
+        .cyber-text { font-size: 1.5rem; font-weight: bold; color: #5c6b7f; }
+        input[name="cyber-opt"] { display: none; }
+        #cyber-opt-1:checked ~ .cyber-highlight { transform: translateX(0%); }
+        #cyber-opt-2:checked ~ .cyber-highlight { transform: translateX(100%); }
+        #cyber-opt-3:checked ~ .cyber-highlight { transform: translateX(200%); }
+        .cyber-highlight { position: absolute; width: calc((280px - 12px) / 3); height: 58px; left: 6px; transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1); }
+        .highlight-inner { width: 100%; height: 100%; border-radius: 14px; background: rgba(0, 240, 255, 0.1); border: 1px solid rgba(0, 240, 255, 0.4); box-shadow: 0 0 20px rgba(0, 240, 255, 0.4); }
+
+        /* Terminal Card Elevation & Glow */
+        .card { 
+            width: 95vw; 
+            max-width: 762px; 
+            height: 320px; 
+            padding: 1px; 
+            border-radius: 0.7rem; 
+            background: linear-gradient(to right, rgba(0, 89, 179, 0.6), rgba(0, 240, 255, 0.6)); 
+            position: relative; 
+            z-index: 10; 
+            margin: 20px auto; 
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
+        }
+        .card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.7), 0 0 50px 10px rgba(255, 255, 255, 0.7);
+        }
+
+        .card-info { background: rgba(5, 5, 10, 0.95); width: 100%; height: 100%; border-radius: 0.7rem; position: relative; overflow: hidden; }
+        .card-textarea { width: 100%; height: 100%; background: transparent; border: none; outline: none; color: #00f0ff; font-size: 1.2rem; padding: 20px; opacity: 0; position: absolute; z-index: 2; resize: none; transition: opacity 0.5s; font-family: 'Courier New', Courier, monospace; }
+        .card-textarea.active { opacity: 1; }
+        .plusButton { position: absolute; bottom: 15px; left: 15px; z-index: 20; width: 2.5rem; height: 2.5rem; border: 1px solid rgba(0, 240, 255, 0.5); background: #000; display: flex; justify-content: center; align-items: center; cursor: pointer; }
+        
+        /* Error Console Elevation & Glow */
+        .error-console { 
+            width: 95vw; 
+            max-width: 762px; 
+            height: 100px; 
+            margin: 10px auto 30px; 
+            background: rgba(5, 5, 5, 0.98); 
+            border: 1px solid #0059b3; 
+            border-radius: 10px; 
+            color: #00aaff; 
+            padding: 8px; 
+            overflow-y: auto; 
+            font-family: monospace; 
+            font-size: 0.8rem; 
+            z-index: 10; 
+            box-shadow: 0 0 15px rgba(0, 89, 179, 0.2); 
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
+        }
+        .error-console:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6), 0 0 25px 4px rgba(255, 255, 255, 0.4);
+        }
+
+        /* Lock Toggle Elevation & Glow */
+        .toggle-container { 
+            margin: 30px auto; 
+            z-index: 10; 
+            position: relative; 
+            display: flex; 
+            justify-content: center; 
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), filter 0.4s ease;
+        }
+        .toggle-container:hover {
+            transform: translateY(-10px);
+            filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.8));
+        }
+
+        .checkboxLabel { --rotate-offset: 45deg; --time-offset: 200ms; --translate-offset: 1rem; --delay: 250ms; --total-duration: calc(var(--time-offset) + var(--delay) * 7); position: relative; height: 3.5rem; aspect-ratio: 1/1; display: flex; justify-content: center; align-items: center; transition: transform var(--total-duration) ease-in-out; cursor: pointer; }
+        .checkboxLabel input { display: none; }
+        .bar { position: absolute; height: 3rem; width: 0.25rem; border-radius: 0.125rem; background-color: #0056b3; top: -50%; transform-origin: bottom; z-index: 0; }
+        #bar1 { rotate: var(--rotate-offset); transition: all var(--time-offset) ease-in; transition-delay: calc(var(--delay) * 0); transform: translateY(calc(var(--translate-offset) * -1)); }
+        #bar2 { rotate: calc(var(--rotate-offset) * 2); transition: all var(--time-offset) ease-in; transition-delay: calc(var(--delay) * 1); transform: translateY(calc(var(--translate-offset) * -1)); }
+        #bar3 { rotate: calc(var(--rotate-offset) * 3); transition: all var(--time-offset) ease-in; transition-delay: calc(var(--delay) * 2); transform: translateY(calc(var(--translate-offset) * -1)); }
+        #bar4 { rotate: calc(var(--rotate-offset) * 4); transition: all var(--time-offset) ease-in; transition-delay: calc(var(--delay) * 3); transform: translateY(calc(var(--translate-offset) * -1)); }
+        #bar5 { rotate: calc(var(--rotate-offset) * 5); transition: all var(--time-offset) ease-in; transition-delay: calc(var(--delay) * 4); transform: translateY(calc(var(--translate-offset) * -1)); }
+        #bar6 { rotate: calc(var(--rotate-offset) * 6); transition: all var(--time-offset) ease-in; transition-delay: calc(var(--delay) * 5); transform: translateY(calc(var(--translate-offset) * -1)); }
+        #bar7 { rotate: calc(var(--rotate-offset) * 7); transition: all var(--time-offset) ease-in; transition-delay: calc(var(--delay) * 6); transform: translateY(calc(var(--translate-offset) * -1)); }
+        #bar8 { rotate: calc(var(--rotate-offset) * 8); transition: all var(--time-offset) ease-in; transition-delay: calc(var(--delay) * 7); transform: translateY(calc(var(--translate-offset) * -1)); }
+        #checkbox:checked ~ #bar1 { transform: translateY(0); background-color: #001f3f; }
+        #checkbox:checked ~ #bar2 { transform: translateY(0); background-color: #003366; }
+        #checkbox:checked ~ #bar3 { transform: translateY(0); background-color: #004080; }
+        #checkbox:checked ~ #bar4 { transform: translateY(0); background-color: #0059b3; }
+        #checkbox:checked ~ #bar5 { transform: translateY(0); background-color: #0073e6; }
+        #checkbox:checked ~ #bar6 { transform: translateY(0); background-color: #3399ff; }
+        #checkbox:checked ~ #bar7 { transform: translateY(0); background-color: #66b2ff; }
+        #checkbox:checked ~ #bar8 { transform: translateY(0); background-color: #99ccff; }
+        .cover { height: 4rem; aspect-ratio: 1/1; border-radius: 50%; background: #000000; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); }
+        .checkboxLabel:has(:checked) { transform: rotate(-360deg); }
+        .cover2 { height: 2rem; aspect-ratio: 1/1; border-radius: 50%; background: #1a1a1a; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); outline: 0.25rem solid #0056b3; }
+        .inCover2 { height: 100%; aspect-ratio: 1/1; position: relative; border-radius: 50%; overflow: hidden; }
+        .rainbow { height: 100%; width: 100%; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); display: flex; flex-direction: column; }
+        .rainbow div { flex: 1; width: 100%; }
+        .rainbow div:nth-child(1) { background-color: #000000; }
+        .rainbow div:nth-child(2) { background-color: #000033; }
+        .rainbow div:nth-child(3) { background-color: #000066; }
+        .rainbow div:nth-child(4) { background-color: #000099; }
+        .rainbow div:nth-child(5) { background-color: #0000cc; }
+        .rainbow div:nth-child(6) { background-color: #0000ff; }
+        .rainbow div:nth-child(7) { background-color: #3333ff; }
+        .nut { height: 0.3rem; aspect-ratio: 1/1; background-color: #0056b3; border-radius: 50%; position: absolute; z-index: 2; top: 0; transform: translateY(-5px); transform-origin: 50% 500%; }
+        #nut1 { rotate: var(--rotate-offset); } #nut2 { rotate: calc(var(--rotate-offset) * 2); } #nut3 { rotate: calc(var(--rotate-offset) * 3); } #nut4 { rotate: calc(var(--rotate-offset) * 4); } #nut5 { rotate: calc(var(--rotate-offset) * 5); } #nut6 { rotate: calc(var(--rotate-offset) * 6); } #nut7 { rotate: calc(var(--rotate-offset) * 7); } #nut8 { rotate: calc(var(--rotate-offset) * 8); }
+        .lock { position: absolute; height: 1.5rem; aspect-ratio: 1/1; top: 50%; left: 50%; transform: translate(-50%, -50%); opacity: 0; transition: opacity 200ms ease-in; transition-delay: var(--total-duration); pointer-events: none; }
+        #checkbox:checked ~ .lock { opacity: 1; }
+
+        @media (min-width: 768px) { .window { height: 100px; } .card { height: 380px; } .card-textarea { font-size: 2rem; } .number { font-size: 3rem; } }
+    </style>
+</head>
+<body>
+    <canvas id="canvas-layer"></canvas>
+    <div class="scanlines"></div>
+    <!-- Added onerror to handle 404 gracefully -->
+    <img src="https://raw.githubusercontent.com/bencreizy/God_Lock/main/logo_omega.png" 
+         class="site-logo" 
+         alt="Omega Logo" 
+         onerror="this.style.display='none'; console.warn('Logo resource 404 - suppressed.');">
+
+    <div class="machine-grid">
+        <div class="slots-row" id="row-1"><div class="window"><div class="number">-</div></div><div class="window"><div class="number">-</div></div><div class="window"><div class="number">-</div></div><div class="window"><div class="number">-</div></div><div class="window"><div class="number">-</div></div></div>
+        <div class="slots-row" id="row-2"><div class="window"><div class="number">-</div></div><div class="window"><div class="number">-</div></div><div class="window"><div class="number">-</div></div><div class="window"><div class="number">-</div></div><div class="window"><div class="number">-</div></div></div>
+        <div class="slots-row" id="row-3"><div class="window"><div class="number">-</div></div><div class="window"><div class="number">-</div></div><div class="window"><div class="number">-</div></div><div class="window"><div class="number">-</div></div><div class="window"><div class="number">-</div></div></div>
+    </div>
+
+    <input placeholder="00000" class="input" maxlength="5" inputmode="numeric">
+
+    <div class="cyber-signboard">
+        <div class="cyber-switch">
+          <input type="radio" name="cyber-opt" id="cyber-opt-1" checked><label for="cyber-opt-1" class="cyber-label"><span class="cyber-text">X</span></label>
+          <input type="radio" name="cyber-opt" id="cyber-opt-2"><label for="cyber-opt-2" class="cyber-label"><span class="cyber-text">Y</span></label>
+          <input type="radio" name="cyber-opt" id="cyber-opt-3"><label for="cyber-opt-3" class="cyber-label"><span class="cyber-text">Z</span></label>
+          <div class="cyber-highlight"><div class="highlight-inner"></div></div>
+        </div>
+    </div>
+
+    <div class="card" id="terminal-card">
+        <div class="card-info" id="card-info-container">
+          <div id="screensaver-container"></div>
+          <div class="plusButton" id="btn-upload"><svg width="24" height="24" viewBox="0 0 24 24" fill="white"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg></div>
+          <textarea id="hud-input" class="card-textarea" spellcheck="false"></textarea>
+          <input type="file" id="file-selector" style="display:none">
+        </div>
+    </div>
+
+    <div class="toggle-container">
+        <label class="checkboxLabel" for="checkbox">
+          <input id="checkbox" name="checkbox" type="checkbox" />
+          <span id="bar1" class="bar"></span><span id="bar2" class="bar"></span><span id="bar3" class="bar"></span><span id="bar4" class="bar"></span><span id="bar5" class="bar"></span><span id="bar6" class="bar"></span><span id="bar7" class="bar"></span><span id="bar8" class="bar"></span>
+          <span id="nut1" class="nut"></span><span id="nut2" class="nut"></span><span id="nut3" class="nut"></span><span id="nut4" class="nut"></span><span id="nut5" class="nut"></span><span id="nut6" class="nut"></span><span id="nut7" class="nut"></span><span id="nut8" class="nut"></span>
+          <span class="cover"></span><span class="cover2"><div class="inCover2"><div class="rainbow"><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div></div></span>
+          <svg class="lock" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><path stroke-linejoin="round" stroke-linecap="round" stroke-width="2" stroke="#000000" d="M7 10.0288C7.47142 10 8.05259 10 8.8 10H15.2C15.9474 10 16.5286 10 17 10.0288M7 10.0288C6.41168 10.0647 5.99429 10.1455 5.63803 10.327C5.07354 10.6146 4.6146 11.0735 4.32698 11.638C4 12.2798 4 13.1198 4 14.8V16.2C4 17.8802 4 18.7202 4.32698 19.362C4.6146 19.9265 5.07354 20.3854 5.63803 20.673C6.27976 21 7.11984 21 8.8 21H15.2C16.8802 21 17.7202 21 18.362 20.673C18.9265 20.3854 19.3854 19.9265 19.673 19.362C20 18.7202 20 17.8802 20 16.2V14.8C20 13.1198 20 12.2798 19.673 11.638C19.3854 11.0735 18.9265 10.6146 18.362 10.327C18.0057 10.1455 17.5883 10.0647 17 10.0288M7 10.0288V8C7 5.23858 9.23858 3 12 3C14.7614 3 17 5.23858 17 8V10.0288"></path></svg>
+        </label>
+    </div>
+
+    <div id="error-console-output" class="error-console"></div>
+
+    <script>
+        (function() {
+            // --- HANDSHAKE LOGIC ---
+            const NOISE_MAP = "Ω≈∆√∫µ†‡¶•ªº01!@#$%^&*()_+{}:<>?|~ ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789.,!?-";
+            const NOISE_LEN = NOISE_MAP.length;
+
+            const deriveSeed = function(v) {
+                let h1 = 0x811c9dc5, h2 = 0xad132845;
+                for (let i = 0; i < v.length; i++) {
+                    const char = v.charCodeAt(i);
+                    h1 = Math.imul(h1 ^ char, 16777619);
+                    h2 = Math.imul(h2 ^ char, 0x517cc1b7);
+                }
+                return (Math.abs(h1 ^ (h2 << 1))) >>> 0;
+            };
+
+            const executeSiphon = function(p, v, lock) {
+                if (!v || v.length !== 15) throw new Error("VECTOR_INCOMPLETE");
+                const s = deriveSeed(v);
+                return p.split('').map(function(c, i) {
+                    const idx = NOISE_MAP.indexOf(c);
+                    if (idx === -1) return c;
+                    const shift = (s + (i * 17)) % NOISE_LEN;
+                    let target = lock ? (idx + shift) % NOISE_LEN : (idx - shift + (NOISE_LEN * 100)) % NOISE_LEN;
+                    return NOISE_MAP[target];
+                }).join('');
+            };
+
+            const hudInput = document.getElementById('hud-input');
             const numInput = document.querySelector('.input');
             const handshakeTrigger = document.getElementById('checkbox');
             const consoleOutput = document.getElementById('error-console-output');
@@ -458,3 +672,4 @@
     </script>
 </body>
 </html>
+
